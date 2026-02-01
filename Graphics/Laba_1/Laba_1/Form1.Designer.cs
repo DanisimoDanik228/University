@@ -38,6 +38,8 @@ partial class Form1
         button2 = new System.Windows.Forms.Button();
         button1 = new System.Windows.Forms.Button();
         pictureBox1 = new System.Windows.Forms.PictureBox();
+        button7 = new System.Windows.Forms.Button();
+        button8 = new System.Windows.Forms.Button();
         ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
         splitContainer1.Panel1.SuspendLayout();
         splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +60,8 @@ partial class Form1
         // 
         // splitContainer1.Panel1
         // 
+        splitContainer1.Panel1.Controls.Add(button8);
+        splitContainer1.Panel1.Controls.Add(button7);
         splitContainer1.Panel1.Controls.Add(button6);
         splitContainer1.Panel1.Controls.Add(button5);
         splitContainer1.Panel1.Controls.Add(button4);
@@ -148,6 +152,28 @@ partial class Form1
         pictureBox1.TabIndex = 0;
         pictureBox1.TabStop = false;
         // 
+        // button7
+        // 
+        button7.Dock = System.Windows.Forms.DockStyle.Top;
+        button7.Location = new System.Drawing.Point(75, 132);
+        button7.Name = "button7";
+        button7.Size = new System.Drawing.Size(211, 23);
+        button7.TabIndex = 6;
+        button7.Text = "#  +  #";
+        button7.UseVisualStyleBackColor = true;
+        button7.Click += button7_Click;
+        // 
+        // button8
+        // 
+        button8.Dock = System.Windows.Forms.DockStyle.Top;
+        button8.Location = new System.Drawing.Point(75, 155);
+        button8.Name = "button8";
+        button8.Size = new System.Drawing.Size(211, 23);
+        button8.TabIndex = 7;
+        button8.Text = "#  -  #";
+        button8.UseVisualStyleBackColor = true;
+        button8.Click += button8_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -164,6 +190,9 @@ partial class Form1
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button button7;
+    private System.Windows.Forms.Button button8;
 
     private System.Windows.Forms.PictureBox pictureBox1;
 
