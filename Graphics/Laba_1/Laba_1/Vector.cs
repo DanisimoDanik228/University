@@ -14,6 +14,21 @@ public class Vector
         return new Vector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
     }
 
+    public static Vector operator +(Vector a, Vector b)
+    {
+        return new Vector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+    }
+
+    public static Vector operator *(Vector a, float digit)
+    {
+        return new Vector(a.X * digit, a.Y * digit, a.Z * digit);
+    }
+
+    public static Vector operator -(Vector a)
+    {
+        return new Vector(-a.X, -a.Y, -a.Z);
+    }
+
     public static Vector Cross(Vector a, Vector b)
     {
         return new Vector(

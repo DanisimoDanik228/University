@@ -7,14 +7,15 @@ public partial class Form1 : Form
     private Camera _camera;
     private ObjModel _model;
     private Bitmap _bmp;
-    
+    private Vector _lightDir = new Vector(0, 0, -1);
+
     public Form1()
     {
         InitializeComponent();
-        
-        _bmp = new Bitmap(pictureBox1.Width,pictureBox1.Height);
+
+        _bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
     }
-    
+
     private void button_Click_OpenFile(object sender, EventArgs e)
     {
         if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -23,7 +24,7 @@ public partial class Form1 : Form
             _model = new ObjModel();
             _model.Load(fileName);
             _camera = new Camera();
-            
+
             Print();
         }
     }
@@ -31,10 +32,10 @@ public partial class Form1 : Form
 
     private void Print()
     {
-        Render.Rendering(_bmp,_model,_camera);
+        Render.Rendering(_bmp, _model, _camera, _lightDir);
         pictureBox1.Image = _bmp;
     }
-    
+
 
     private void Form1_KeyDown(object sender, KeyEventArgs e)
     {
@@ -54,7 +55,7 @@ public partial class Form1 : Form
                 _model.X += 0.5f;
                 break;
         }
-        
+
         Print();
     }
 
@@ -97,7 +98,7 @@ public partial class Form1 : Form
         //_camera.near -= 10f;
         Print();
     }
-    
+
     private void button8_Click(object sender, EventArgs e)
     {
         //_camera.fov +=  0.2f;
@@ -105,6 +106,27 @@ public partial class Form1 : Form
         //_camera.aspect -= 0.05f;
         //_camera.far -= 10f;
         //_camera.near -= 10f;
+        Print();
+    }
+
+    private void numericUpDown_X_ValueChanged(object sender, EventArgs e)
+    {
+        _lightDir.X = (float)numericUpDown_X.Value / 10;
+        //_lightDir.Normalize();
+        Print();
+    }
+
+    private void numericUpDown_Y_ValueChanged(object sender, EventArgs e)
+    {
+        _lightDir.Y = (float)numericUpDown_Y.Value / 10;
+        //_lightDir.Normalize();
+        Print();
+    }
+
+    private void numericUpDown_Z_ValueChanged(object sender, EventArgs e)
+    {
+        _lightDir.Z = (float)numericUpDown_Z.Value / 10;
+        //_lightDir.Normalize();
         Print();
     }
 }
