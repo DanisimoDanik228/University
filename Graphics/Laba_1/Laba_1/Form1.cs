@@ -1,4 +1,6 @@
+using System.IO;
 using System.Numerics;
+using System.Windows.Forms.Design;
 
 namespace Laba_1;
 
@@ -13,11 +15,6 @@ public partial class Form1 : Form
     private Bitmap _nmMap; 
     private Bitmap _specMap;
 
-    private string _fileObj = @"C:\Users\danil\_ DELETE _\3D model\Head\head.obj";
-    private string _fileDiffuse = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_diffuse.tga";//.Replace("tga","png");
-    private string _fileNm = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_nm_tangent.tga";//.Replace("tga", "png");
-    private string _fileSpec = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_spec.tga";//.Replace("tga", "png");
-
     public Form1()
     {
         InitializeComponent();
@@ -25,23 +22,29 @@ public partial class Form1 : Form
         _bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
         _model = new ObjModel();
-        _model.Load(_fileObj);
         _camera = new Camera();
+        Load("C:\\Users\\danil\\_ DELETE _\\3D model\\laba_4\\Head\\head.obj");
+        Print();
+    }
 
-        //_diffuseMap = TgaLoader.LoadTga(_fileDiffuse);
-        //_nmMap = TgaLoader.LoadTga(_fileNm);
-        //_specMap = TgaLoader.LoadTga(_fileSpec);
+    private void Load(string filename)
+    {
+        string path = Path.GetDirectoryName(filename);
+        string folderName = Path.GetFileName(path);
+        string name = folderName.ToLower();
 
-        _diffuseMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_diffuse.bmp");
-        _nmMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_nm_tangent.bmp");
-        _specMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_spec.bmp");
+
+        _model.Load($@"{path}\{name}.obj");
+        _diffuseMap = new Bitmap($@"{path}\{name}_diffuse.bmp");
+        _nmMap = new Bitmap($@"{path}\{name}_nm_tangent.bmp");
+        _specMap = new Bitmap($@"{path}\{name}_spec.bmp");
     }
 
     private void button_Click_OpenFile(object sender, EventArgs e)
     {
         if (openFileDialog1.ShowDialog() == DialogResult.OK)
         {
-            _fileObj = openFileDialog1.FileName;
+            Load(openFileDialog1.FileName);
 
             Print();
         }
@@ -146,15 +149,5 @@ public partial class Form1 : Form
         _lightDir.Z = (float)numericUpDown_Z.Value / 10;
         //_lightDir.Normalize();
         Print();
-    }
-
-    private void button_Texture_Click(object sender, EventArgs e)
-    {
-        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-        {
-            _fileDiffuse = openFileDialog1.FileName;
-
-            Print();
-        }
     }
 }

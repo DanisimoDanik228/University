@@ -43,7 +43,6 @@ partial class Form1
         button2 = new Button();
         button1 = new Button();
         pictureBox1 = new PictureBox();
-        button_Texture = new Button();
         ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
         splitContainer1.Panel1.SuspendLayout();
         splitContainer1.Panel2.SuspendLayout();
@@ -67,7 +66,6 @@ partial class Form1
         // 
         // splitContainer1.Panel1
         // 
-        splitContainer1.Panel1.Controls.Add(button_Texture);
         splitContainer1.Panel1.Controls.Add(numericUpDown_Z);
         splitContainer1.Panel1.Controls.Add(numericUpDown_Y);
         splitContainer1.Panel1.Controls.Add(numericUpDown_X);
@@ -212,17 +210,6 @@ partial class Form1
         pictureBox1.TabIndex = 0;
         pictureBox1.TabStop = false;
         // 
-        // button_Texture
-        // 
-        button_Texture.Dock = DockStyle.Top;
-        button_Texture.Location = new Point(3, 240);
-        button_Texture.Name = "button_Texture";
-        button_Texture.Size = new Size(181, 40);
-        button_Texture.TabIndex = 11;
-        button_Texture.Text = "Open texture";
-        button_Texture.UseVisualStyleBackColor = true;
-        button_Texture.Click += button_Texture_Click;
-        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
@@ -266,5 +253,4 @@ partial class Form1
     private NumericUpDown numericUpDown_Z;
     private NumericUpDown numericUpDown_Y;
     private NumericUpDown numericUpDown_X;
-    private Button button_Texture;
 }

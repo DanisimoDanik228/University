@@ -10,7 +10,6 @@ public class Render
     private static float[] _zBuffer;
     private static readonly int _bgColor = Color.FromArgb(255, 30, 30, 35).ToArgb();
 
-    // Настройки освещения
     private const float K_AMBIENT = 0.15f;
     private const float SHININESS = 60f;
 
