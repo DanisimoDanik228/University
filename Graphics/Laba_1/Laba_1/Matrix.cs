@@ -5,7 +5,32 @@ namespace Laba_1;
 public class Matrix
 {
     private float[,] m = new float[4, 4];
-    
+    public Matrix()
+    {
+    }
+    public Matrix(Vector T, Vector B, Vector N)
+    {
+        m[0, 0] = T.X; 
+        m[1, 0] = T.Y; 
+        m[2, 0] = T.Z; 
+        m[3, 0] = 0;
+
+        m[0, 1] = B.X; 
+        m[1, 1] = B.Y; 
+        m[2, 1] = B.Z; 
+        m[3, 1] = 0;
+
+        m[0, 2] = N.X; 
+        m[1, 2] = N.Y; 
+        m[2, 2] = N.Z; 
+        m[3, 2] = 0;
+
+        m[0, 3] = 0; 
+        m[1, 3] = 0; 
+        m[2, 3] = 0;
+        m[3, 3] = 1;
+    }
+
     public float this[int row, int col]
     {
         get => m[row, col];

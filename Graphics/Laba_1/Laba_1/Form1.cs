@@ -5,25 +5,43 @@ namespace Laba_1;
 public partial class Form1 : Form
 {
     private Camera _camera;
-    private ObjModel _model;
     private Bitmap _bmp;
     private Vector _lightDir = new Vector(0, 0, -1);
+
+    private ObjModel _model;
+    private Bitmap _diffuseMap;
+    private Bitmap _nmMap; 
+    private Bitmap _specMap;
+
+    private string _fileObj = @"C:\Users\danil\_ DELETE _\3D model\Head\head.obj";
+    private string _fileDiffuse = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_diffuse.tga";//.Replace("tga","png");
+    private string _fileNm = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_nm_tangent.tga";//.Replace("tga", "png");
+    private string _fileSpec = @"C:\Users\danil\_ DELETE _\3D model\Eye\eyes_spec.tga";//.Replace("tga", "png");
 
     public Form1()
     {
         InitializeComponent();
 
         _bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+
+        _model = new ObjModel();
+        _model.Load(_fileObj);
+        _camera = new Camera();
+
+        //_diffuseMap = TgaLoader.LoadTga(_fileDiffuse);
+        //_nmMap = TgaLoader.LoadTga(_fileNm);
+        //_specMap = TgaLoader.LoadTga(_fileSpec);
+
+        _diffuseMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_diffuse.bmp");
+        _nmMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_nm_tangent.bmp");
+        _specMap = new Bitmap(@"C:\Users\danil\_ DELETE _\3D model\Head\head_spec.bmp");
     }
 
     private void button_Click_OpenFile(object sender, EventArgs e)
     {
         if (openFileDialog1.ShowDialog() == DialogResult.OK)
         {
-            var fileName = openFileDialog1.FileName;
-            _model = new ObjModel();
-            _model.Load(fileName);
-            _camera = new Camera();
+            _fileObj = openFileDialog1.FileName;
 
             Print();
         }
@@ -32,7 +50,7 @@ public partial class Form1 : Form
 
     private void Print()
     {
-        Render.Rendering(_bmp, _model, _camera, _lightDir);
+        Render.Rendering(_bmp, _model, _camera, _lightDir, _diffuseMap,_nmMap,_specMap);
         pictureBox1.Image = _bmp;
     }
 
@@ -79,7 +97,7 @@ public partial class Form1 : Form
 
     private void button_Click_Plus(object sender, EventArgs e)
     {
-        _model.Scale += 0.2f;
+        _model.Scale += 1f;
         Print();
     }
 
@@ -128,5 +146,15 @@ public partial class Form1 : Form
         _lightDir.Z = (float)numericUpDown_Z.Value / 10;
         //_lightDir.Normalize();
         Print();
+    }
+
+    private void button_Texture_Click(object sender, EventArgs e)
+    {
+        if (openFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            _fileDiffuse = openFileDialog1.FileName;
+
+            Print();
+        }
     }
 }

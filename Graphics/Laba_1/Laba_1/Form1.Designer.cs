@@ -43,6 +43,7 @@ partial class Form1
         button2 = new Button();
         button1 = new Button();
         pictureBox1 = new PictureBox();
+        button_Texture = new Button();
         ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
         splitContainer1.Panel1.SuspendLayout();
         splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +67,7 @@ partial class Form1
         // 
         // splitContainer1.Panel1
         // 
+        splitContainer1.Panel1.Controls.Add(button_Texture);
         splitContainer1.Panel1.Controls.Add(numericUpDown_Z);
         splitContainer1.Panel1.Controls.Add(numericUpDown_Y);
         splitContainer1.Panel1.Controls.Add(numericUpDown_X);
@@ -82,13 +84,13 @@ partial class Form1
         // 
         splitContainer1.Panel2.Controls.Add(pictureBox1);
         splitContainer1.Size = new Size(800, 450);
-        splitContainer1.SplitterDistance = 215;
+        splitContainer1.SplitterDistance = 185;
         splitContainer1.TabIndex = 0;
         splitContainer1.Text = "splitContainer1";
         // 
         // numericUpDown_Z
         // 
-        numericUpDown_Z.Location = new Point(3, 273);
+        numericUpDown_Z.Location = new Point(115, 250);
         numericUpDown_Z.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
         numericUpDown_Z.Name = "numericUpDown_Z";
         numericUpDown_Z.Size = new Size(50, 27);
@@ -97,7 +99,7 @@ partial class Form1
         // 
         // numericUpDown_Y
         // 
-        numericUpDown_Y.Location = new Point(3, 240);
+        numericUpDown_Y.Location = new Point(59, 250);
         numericUpDown_Y.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
         numericUpDown_Y.Name = "numericUpDown_Y";
         numericUpDown_Y.Size = new Size(50, 27);
@@ -106,7 +108,7 @@ partial class Form1
         // 
         // numericUpDown_X
         // 
-        numericUpDown_X.Location = new Point(3, 207);
+        numericUpDown_X.Location = new Point(3, 250);
         numericUpDown_X.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
         numericUpDown_X.Name = "numericUpDown_X";
         numericUpDown_X.Size = new Size(50, 27);
@@ -118,7 +120,7 @@ partial class Form1
         button8.Dock = DockStyle.Top;
         button8.Location = new Point(0, 178);
         button8.Name = "button8";
-        button8.Size = new Size(211, 23);
+        button8.Size = new Size(181, 23);
         button8.TabIndex = 7;
         button8.Text = "#  -  #";
         button8.UseVisualStyleBackColor = true;
@@ -129,7 +131,7 @@ partial class Form1
         button7.Dock = DockStyle.Top;
         button7.Location = new Point(0, 155);
         button7.Name = "button7";
-        button7.Size = new Size(211, 23);
+        button7.Size = new Size(181, 23);
         button7.TabIndex = 6;
         button7.Text = "#  +  #";
         button7.UseVisualStyleBackColor = true;
@@ -140,7 +142,7 @@ partial class Form1
         button6.Dock = DockStyle.Top;
         button6.Location = new Point(0, 132);
         button6.Name = "button6";
-        button6.Size = new Size(211, 23);
+        button6.Size = new Size(181, 23);
         button6.TabIndex = 5;
         button6.Text = "-";
         button6.UseVisualStyleBackColor = true;
@@ -151,7 +153,7 @@ partial class Form1
         button5.Dock = DockStyle.Top;
         button5.Location = new Point(0, 109);
         button5.Name = "button5";
-        button5.Size = new Size(211, 23);
+        button5.Size = new Size(181, 23);
         button5.TabIndex = 4;
         button5.Text = "+";
         button5.UseVisualStyleBackColor = true;
@@ -162,7 +164,7 @@ partial class Form1
         button4.Dock = DockStyle.Top;
         button4.Location = new Point(0, 86);
         button4.Name = "button4";
-        button4.Size = new Size(211, 23);
+        button4.Size = new Size(181, 23);
         button4.TabIndex = 3;
         button4.Text = "Z";
         button4.UseVisualStyleBackColor = true;
@@ -173,7 +175,7 @@ partial class Form1
         button3.Dock = DockStyle.Top;
         button3.Location = new Point(0, 63);
         button3.Name = "button3";
-        button3.Size = new Size(211, 23);
+        button3.Size = new Size(181, 23);
         button3.TabIndex = 2;
         button3.Text = "Y";
         button3.UseVisualStyleBackColor = true;
@@ -184,7 +186,7 @@ partial class Form1
         button2.Dock = DockStyle.Top;
         button2.Location = new Point(0, 40);
         button2.Name = "button2";
-        button2.Size = new Size(211, 23);
+        button2.Size = new Size(181, 23);
         button2.TabIndex = 1;
         button2.Text = "X";
         button2.UseVisualStyleBackColor = true;
@@ -195,7 +197,7 @@ partial class Form1
         button1.Dock = DockStyle.Top;
         button1.Location = new Point(0, 0);
         button1.Name = "button1";
-        button1.Size = new Size(211, 40);
+        button1.Size = new Size(181, 40);
         button1.TabIndex = 0;
         button1.Text = "Open File";
         button1.UseVisualStyleBackColor = true;
@@ -209,6 +211,17 @@ partial class Form1
         pictureBox1.Size = new Size(2000, 2000);
         pictureBox1.TabIndex = 0;
         pictureBox1.TabStop = false;
+        // 
+        // button_Texture
+        // 
+        button_Texture.Dock = DockStyle.Top;
+        button_Texture.Location = new Point(3, 240);
+        button_Texture.Name = "button_Texture";
+        button_Texture.Size = new Size(181, 40);
+        button_Texture.TabIndex = 11;
+        button_Texture.Text = "Open texture";
+        button_Texture.UseVisualStyleBackColor = true;
+        button_Texture.Click += button_Texture_Click;
         // 
         // Form1
         // 
@@ -253,4 +266,5 @@ partial class Form1
     private NumericUpDown numericUpDown_Z;
     private NumericUpDown numericUpDown_Y;
     private NumericUpDown numericUpDown_X;
+    private Button button_Texture;
 }
