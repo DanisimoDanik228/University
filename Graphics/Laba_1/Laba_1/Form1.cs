@@ -129,4 +129,28 @@ public partial class Form1 : Form
         //_lightDir.Normalize();
         Print();
     }
+
+    private void numericUpDown_Ambient_ValueChanged(object sender, EventArgs e)
+    {
+        _model.k_ambient = (float)numericUpDown_Ambient.Value / 10f;
+        Print();
+    }
+
+    private void numericUpDown_Specular_ValueChanged(object sender, EventArgs e)
+    {
+        _model.k_specular = (float)numericUpDown_Specular.Value / 10f;
+        Print();
+    }
+
+    private void numericUpDown_Shininess_ValueChanged(object sender, EventArgs e)
+    {
+        _model.shininess = (float)numericUpDown_Shininess.Value;
+        Print();
+    }
+
+    private void numericUpDown_Diffuse_ValueChanged(object sender, EventArgs e)
+    {
+        _model.k_diffuse = (float)numericUpDown_Diffuse.Value / 10f;
+        Print();
+    }
 }

@@ -34,6 +34,10 @@ partial class Form1
         numericUpDown_Z = new NumericUpDown();
         numericUpDown_Y = new NumericUpDown();
         numericUpDown_X = new NumericUpDown();
+        numericUpDown_Ambient = new NumericUpDown();
+        numericUpDown_Diffuse = new NumericUpDown();
+        numericUpDown_Specular = new NumericUpDown();
+        numericUpDown_Shininess = new NumericUpDown();
         button8 = new Button();
         button7 = new Button();
         button6 = new Button();
@@ -69,6 +73,10 @@ partial class Form1
         splitContainer1.Panel1.Controls.Add(numericUpDown_Z);
         splitContainer1.Panel1.Controls.Add(numericUpDown_Y);
         splitContainer1.Panel1.Controls.Add(numericUpDown_X);
+        splitContainer1.Panel1.Controls.Add(numericUpDown_Ambient);
+        splitContainer1.Panel1.Controls.Add(numericUpDown_Specular);
+        splitContainer1.Panel1.Controls.Add(numericUpDown_Shininess);
+        splitContainer1.Panel1.Controls.Add(numericUpDown_Diffuse);
         splitContainer1.Panel1.Controls.Add(button8);
         splitContainer1.Panel1.Controls.Add(button7);
         splitContainer1.Panel1.Controls.Add(button6);
@@ -112,6 +120,46 @@ partial class Form1
         numericUpDown_X.Size = new Size(50, 27);
         numericUpDown_X.TabIndex = 8;
         numericUpDown_X.ValueChanged += numericUpDown_X_ValueChanged;
+        // 
+        // numericUpDown_Diffuse
+        // 
+        numericUpDown_Diffuse.Value = 7;
+        numericUpDown_Diffuse.Location = new Point(3, 330);
+        numericUpDown_Diffuse.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
+        numericUpDown_Diffuse.Name = "numericUpDown_Diffuse";
+        numericUpDown_Diffuse.Size = new Size(50, 27);
+        numericUpDown_Diffuse.TabIndex = 8;
+        numericUpDown_Diffuse.ValueChanged += numericUpDown_Diffuse_ValueChanged;
+        // 
+        // numericUpDown_Shininess
+        // 
+        numericUpDown_Shininess.Value = 32;
+        numericUpDown_Shininess.Location = new Point(3, 370);
+        numericUpDown_Shininess.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
+        numericUpDown_Shininess.Name = "numericUpDown_Shininess";
+        numericUpDown_Shininess.Size = new Size(50, 27);
+        numericUpDown_Shininess.TabIndex = 8;
+        numericUpDown_Shininess.ValueChanged += numericUpDown_Shininess_ValueChanged;
+        // 
+        // numericUpDown_Specular
+        // 
+        numericUpDown_Specular.Value = 5;
+        numericUpDown_Specular.Location = new Point(3, 410);
+        numericUpDown_Specular.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
+        numericUpDown_Specular.Name = "numericUpDown_Specular";
+        numericUpDown_Specular.Size = new Size(50, 27);
+        numericUpDown_Specular.TabIndex = 8;
+        numericUpDown_Specular.ValueChanged += numericUpDown_Specular_ValueChanged;
+        // 
+        // numericUpDown_Ambient
+        // 
+        numericUpDown_Ambient.Value = 1;
+        numericUpDown_Ambient.Location = new Point(3, 450);
+        numericUpDown_Ambient.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
+        numericUpDown_Ambient.Name = "numericUpDown_Ambient";
+        numericUpDown_Ambient.Size = new Size(50, 27);
+        numericUpDown_Ambient.TabIndex = 8;
+        numericUpDown_Ambient.ValueChanged += numericUpDown_Ambient_ValueChanged;
         // 
         // button8
         // 
@@ -253,4 +301,8 @@ partial class Form1
     private NumericUpDown numericUpDown_Z;
     private NumericUpDown numericUpDown_Y;
     private NumericUpDown numericUpDown_X;
+    private NumericUpDown numericUpDown_Shininess;
+    private NumericUpDown numericUpDown_Ambient;
+    private NumericUpDown numericUpDown_Diffuse;
+    private NumericUpDown numericUpDown_Specular;
 }

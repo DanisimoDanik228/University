@@ -12,6 +12,11 @@ public class ObjModel
     public List<Vector> Normals = new List<Vector>();
     public List<Face> Faces = new List<Face>();
 
+    public float k_ambient = 0.1f;
+    public float k_diffuse = 0.7f;
+    public float k_specular = 0.5f;
+    public float shininess = 32.0f;
+
     public class Face
     {
         public int[] VertexIndices;

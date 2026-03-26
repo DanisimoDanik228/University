@@ -11,11 +11,7 @@ public class Render
     private static readonly int _bgColor = Color.FromArgb(255, 20, 20, 25).ToArgb();
     private static float[] _zBuffer;
 
-    private static readonly Vector lightColor = new Vector(1, 1, 1); 
-    private static readonly float k_ambient = 0.1f;  
-    private static readonly float k_diffuse = 0.7f;    
-    private static readonly float k_specular = 0.5f;   
-    private static readonly float shininess = 32.0f;   
+    private static readonly Vector lightColor = new Vector(1, 1, 1);   
 
     public static unsafe void Rendering(Bitmap bmp, ObjModel model, Camera camera, Vector lightDir)
     {
@@ -72,7 +68,8 @@ public class Render
                     p1_s, p2_s, p3_s,
                     v1_w, v2_w, v3_w,
                     n1_w, n2_w, n3_w,
-                    camera.eye, L);
+                    camera.eye, L,
+                    model);
             }
         }
         finally
@@ -85,7 +82,8 @@ public class Render
         Vector p1, Vector p2, Vector p3,      
         Vector v1w, Vector v2w, Vector v3w, 
         Vector n1, Vector n2, Vector n3,       
-        Vector cameraPos, Vector L)            
+        Vector cameraPos, Vector L, 
+        ObjModel model)            
     {
         int minX = (int)Math.Max(0, Math.Min(p1.X, Math.Min(p2.X, p3.X)));
         int maxX = (int)Math.Min(width - 1, Math.Max(p1.X, Math.Max(p2.X, p3.X)));
@@ -119,12 +117,12 @@ public class Render
                         float diffuseInten = Math.Max(0, dotNL);
                         Vector R = (interpolatedNormal * (2.0f * dotNL) - L).Normalize();
 
-                        float ambient = k_ambient;
+                        float ambient = model.k_ambient;
 
-                        float diffuse = k_diffuse * diffuseInten;
+                        float diffuse = model.k_diffuse * diffuseInten;
 
-                        float specInten = (float)Math.Pow(Math.Max(0, Vector.Dot(R, V)), shininess);
-                        float specular = k_specular * specInten;
+                        float specInten = (float)Math.Pow(Math.Max(0, Vector.Dot(R, V)), model.shininess);
+                        float specular = model.k_specular * specInten;
 
                         byte* ptr = (byte*)pBase + (y * stride) + (x * 4);
                         *(int*)ptr = CalculatePhongPixel(objectColor, ambient, diffuse, specular);
