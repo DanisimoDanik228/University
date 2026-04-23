@@ -50,15 +50,19 @@ public class Render
                 Vector v2_w = modelM * model.Vertices[face.VertexIndices[1]];
                 Vector v3_w = modelM * model.Vertices[face.VertexIndices[2]];
 
+                Vector edge1 = v2_w - v1_w;
+                Vector edge2 = v3_w - v1_w;
+                Vector faceNormal = Vector.Cross(edge1, edge2);
+
+                Vector viewDir = camera.eye - v1_w;
+
+                if (Vector.Dot(faceNormal, viewDir) <= 0)
+                    continue;
+
                 var rotM = Matrix.CreateRotation(model.AngleX, model.AngleY, model.AngleZ);
                 Vector n1_w = (rotM * model.Normals[face.NormalIndices[0]]).Normalize();
                 Vector n2_w = (rotM * model.Normals[face.NormalIndices[1]]).Normalize();
                 Vector n3_w = (rotM * model.Normals[face.NormalIndices[2]]).Normalize();
-
-                Vector faceCenter = (v1_w + v2_w + v3_w) * (1f / 3f);
-                Vector viewToFace = (faceCenter - camera.eye).Normalize();
-                Vector avgNormal = (n1_w + n2_w + n3_w).Normalize();
-                if (Vector.Dot(avgNormal, viewToFace) > 0) continue;
 
                 Vector p1_s = Project(combined, model.Vertices[face.VertexIndices[0]], width, height);
                 Vector p2_s = Project(combined, model.Vertices[face.VertexIndices[1]], width, height);
